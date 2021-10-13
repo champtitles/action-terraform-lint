@@ -1,5 +1,5 @@
 @test "check_file_underscore" {
-  echos
+  echo
   run sh check_file_underscore.sh .
   echo $output
   [ "$status" -eq 0 ]
