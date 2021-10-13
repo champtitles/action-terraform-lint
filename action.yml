@@ -9,4 +9,7 @@ runs:
         sudo dpkg -i ripgrep_13.0.0_amd64.deb
 
         # run all check scripts
-        find . -name "check_*.sh" | xargs -t -I{} bash {} .
+        # find . -name "check_*.sh" | xargs -t -I{} bash {} .
+        ls -la
+        bash check_file_underscore.sh .
+        bash check_unused_variables.sh .
