@@ -10,5 +10,8 @@ runs:
 
         # run all check scripts
         cp ${GITHUB_ACTION_PATH}/*.sh .
-        ls -la
-        find . -name "check_*.sh" | xargs -t -I{} bash {} .
+
+        for script in check_*.sh; do
+            echo "\nRunning $script"
+            bash "$script" .
+        done || exit 1
