@@ -12,4 +12,4 @@ runs:
         # run all check scripts using bats
         cp ${GITHUB_ACTION_PATH}/*.sh .
         cp ${GITHUB_ACTION_PATH}/*.bats .
-        bats -p .
+        bats .
