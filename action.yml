@@ -7,11 +7,9 @@ runs:
       run: |
         curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
         sudo dpkg -i ripgrep_13.0.0_amd64.deb
+        sudo npm install -g bats
 
-        # run all check scripts
+        # run all check scripts using bats
         cp ${GITHUB_ACTION_PATH}/*.sh .
-
-        for script in check_*.sh; do
-            echo "\nRunning $script"
-            bash "$script" .
-        done || exit 1
+        cp ${GITHUB_ACTION_PATH}/*.bats .
+        bats .
