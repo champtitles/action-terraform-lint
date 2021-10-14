@@ -1,0 +1,24 @@
+name: terraform-lint
+description: https://github.com/champtitles/action-terraform-lint
+runs:
+  using: "composite"
+  steps:
+    - name: terraform fmt
+      shell: bash
+      run: terraform fmt -recursive -check
+
+    - name: tflint
+      shell: bash
+      run: docker run --rm -v $(pwd):/data -t ghcr.io/terraform-linters/tflint-bundle@sha256:1990d20ff581a87530a7496b3c3af39b9e679acaaf2062d1072c2ac706a7a915 --enable-plugin=aws
+
+    - name: custom linting rules
+      shell: bash
+      run: |
+        curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
+        sudo dpkg -i ripgrep_13.0.0_amd64.deb
+        sudo npm install -g bats
+
+        # run all check scripts using bats
+        cp ${GITHUB_ACTION_PATH}/*.sh .
+        cp ${GITHUB_ACTION_PATH}/*.bats .
+        bats .
