@@ -14,3 +14,4 @@ runs:
         cp ${GITHUB_ACTION_PATH}/.tflint.hcl .
         tflint --init
         tflint
+        for dir in `find . -type d -not -path "./.git/*"`; do tflint $dir; done
