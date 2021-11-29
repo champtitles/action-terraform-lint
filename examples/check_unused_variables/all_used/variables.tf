@@ -1,9 +1,24 @@
-variable "one" {}
+variable "one" {
+  description = "test"
+  type        = string
+}
 
-variable "two" {}
+variable "two" {
+  description = "test"
+  type        = string
+}
 
-variable "three" {}
+variable "three" {
+  description = "test"
+  type        = string
+}
 
-variable "four" {}
+variable "four" {
+  description = "test"
+  type        = string
+}
 
-variable "five" {}
+variable "five" {
+  description = "test"
+  type        = string
+}
