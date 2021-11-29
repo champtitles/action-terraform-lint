@@ -13,4 +13,6 @@ runs:
         curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
         cp ${GITHUB_ACTION_PATH}/.tflint.hcl .
         tflint --init
+
+        set +e
         for dir in `find . -type d -not -path "./.git/*"`; do echo $dir; tflint $dir; done
