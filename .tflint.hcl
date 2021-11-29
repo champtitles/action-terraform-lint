@@ -4,7 +4,6 @@ plugin "champtitles" {
   source  = "github.com/champtitles/tflint-ruleset-champtitles"
   signing_key = <<-KEY
 -----BEGIN PGP PUBLIC KEY BLOCK-----
-
 mDMEYaU6rRYJKwYBBAHaRw8BAQdAxCoC5OS4bWHnjE1hW5S7JhMFlS7iO409F/tT
 2wiiEHe0LUp1c3RpbiBSZWV2ZXMgPGp1c3Rpbi5yZWV2ZXNAY2hhbXB0aXRsZXMu
 Y29tPoiUBBMWCgA8FiEE/VI2BiaVe8afXlwV4yDNArbILHQFAmGlOq0CGwMFCwkI
