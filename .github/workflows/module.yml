@@ -22,5 +22,6 @@ jobs:
       - name: Run Tests
         run: |
           curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          tflint --init
           sudo npm install -g bats
           bats tests/
