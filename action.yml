@@ -14,5 +14,6 @@ runs:
         cp ${GITHUB_ACTION_PATH}/.tflint.hcl .
         tflint --init
 
+        TF_DIRS=$(find . -name "*.tf" -not -path "./.git/*" -exec dirname {} \; | sort | uniq)
         set +e
-        for dir in `find . -type d -not -path "./.git/*"`; do echo $dir; tflint $dir; done
+        for dir in $TF_DIRS; do echo $dir; tflint $dir; done
