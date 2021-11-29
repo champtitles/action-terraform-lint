@@ -22,7 +22,4 @@ jobs:
       - name: Run Tests
         working-directory: test/
         run: |
-          curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
-          sudo dpkg -i ripgrep_13.0.0_amd64.deb
-          sudo npm install -g bats
-          bats .
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
