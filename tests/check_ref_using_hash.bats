@@ -15,3 +15,9 @@
   echo $output
   [ "$status" -ne 0 ]
 }
+
+@test "check_ref_using_hash/ignore" {
+  run tflint examples/check_ref_using_hash/ignore
+  echo $output
+  [ "$status" -eq 0 ]
+}
