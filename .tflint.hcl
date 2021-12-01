@@ -53,3 +53,8 @@ rule "terraform_unused_declarations" {
 rule "terraform_unused_required_providers" {
   enabled = true
 }
+
+# This rule is superseded by https://github.com/champtitles/tflint-ruleset-champtitles/blob/main/rules/module_call_using_hash.go
+rule "terraform_module_pinned_source" {
+  enabled = false
+}
