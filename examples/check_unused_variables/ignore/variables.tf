@@ -18,6 +18,7 @@ variable "four" {
   type        = string
 }
 
+# tflint-ignore: terraform_unused_declarations
 variable "five" {
   description = "test"
   type        = string

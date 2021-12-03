@@ -9,16 +9,11 @@ runs:
 
     - name: tflint
       shell: bash
-      run: docker run --rm -v $(pwd):/data -t ghcr.io/terraform-linters/tflint-bundle@sha256:1990d20ff581a87530a7496b3c3af39b9e679acaaf2062d1072c2ac706a7a915 --enable-plugin=aws
-
-    - name: custom linting rules
-      shell: bash
       run: |
-        curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb
-        sudo dpkg -i ripgrep_13.0.0_amd64.deb
-        sudo npm install -g bats
+        curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+        cp ${GITHUB_ACTION_PATH}/.tflint.hcl .
+        tflint --init
 
-        # run all check scripts using bats
-        cp ${GITHUB_ACTION_PATH}/*.sh .
-        cp ${GITHUB_ACTION_PATH}/*.bats .
-        bats .
+        TF_DIRS=$(find . -name "*.tf" -not -path "./.git/*" -exec dirname {} \; | sort | uniq)
+        set +e
+        for dir in $TF_DIRS; do echo $dir; tflint $dir; done

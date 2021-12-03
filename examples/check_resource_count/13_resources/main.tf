@@ -19,3 +19,7 @@ resource "random_pet" "this9" {}
 resource "random_pet" "this10" {}
 
 resource "random_pet" "this11" {}
+
+resource "random_pet" "this12" {}
+
+resource "random_pet" "this13" {}
